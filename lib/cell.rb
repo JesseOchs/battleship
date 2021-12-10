@@ -19,5 +19,10 @@ class Cell
     @fired_upon
   end
 
+  def fire_upon
+    @fired_upon = !@fired_upon
+  end
+
+
 
 end
