@@ -28,6 +28,8 @@ class Cell
       "M"
     elsif show_ship == true && @ship !=nil && @fired_upon == false
       "S"
+    elsif show_ship == false && @fired_upon == true && @ship != nil
+      "H"  
     else
       "."
     end
