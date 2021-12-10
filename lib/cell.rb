@@ -23,8 +23,15 @@ class Cell
     @fired_upon = !@fired_upon
   end
 
-  def render
-    @fired_upon == false ? "." : "M"
+  def render(show_ship = false)
+    if show_ship == false && @fired_upon == true && @ship == nil
+      "M"
+    elsif show_ship == true && @ship !=nil && @fired_upon == false
+      "S"
+    else
+      "."
+    end
+
   end
 
 
