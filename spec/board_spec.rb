@@ -3,12 +3,12 @@ require './lib/ship'
 
 RSpec.describe Board do
 
-  xit 'exists' do
+  it 'exists' do
     board = Board.new
     expect(board).to be_instance_of(Board)
   end
 
-  xit 'has cells in a hash' do
+  it 'has cells in a hash' do
     board = Board.new
     expect(board.cell).to be_instance_of(Hash)
   end
