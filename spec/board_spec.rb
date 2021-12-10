@@ -24,11 +24,10 @@ RSpec.describe Board do
     expect(board.valid_coordinate?("A22")).to be false
   end
 
-  xit '' do
+  it 'instance of ship' do
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
-    # this test is not done being written
     expect(cruiser).to be_instance_of(Ship)
     expect(submarine).to be_instance_of(Ship)
   end
