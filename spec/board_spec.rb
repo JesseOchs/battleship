@@ -32,11 +32,11 @@ RSpec.describe Board do
     expect(submarine).to be_instance_of(Ship)
   end
 
-  xit 'placement length does not fit ship size' do
+  it 'placement length does not fit ship size' do
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
-    # this test is not done being written
+    board.create_board
     expect(board.valid_placement?(cruiser, ["A1", "A2"])).to be false
     expect(board.valid_placement?(submarine, ["A2", "A3", "A4"])).to be false
   end
