@@ -1,8 +1,23 @@
+require './lib/cell'
 class Board
 
-    attr_reader :cell
+    attr_reader :cells
     def initialize
-      @cell = {}
+      @cells = {}
     end
+
+    def create_board
+      ("A"..."E").each do |letter|
+        (1...5).each do |number|
+          @cells["#{letter}#{number}"] = Cell.new("#{letter}#{number}")
+        end
+      end
+    end
+
+    def valid_coordinate?(coordinate)
+      @cells.has_key?(coordinate)
+    end
+
+
 
 end
