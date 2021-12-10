@@ -10,4 +10,9 @@ class Cell
     @ship == nil
   end
 
+  def place_ship(ship_object)
+    @ship = ship_object
+  end
+
+
 end
