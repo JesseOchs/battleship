@@ -23,6 +23,10 @@ class Cell
     @fired_upon = !@fired_upon
   end
 
+  def render
+    @fired_upon == false ? "." : "M"
+  end
+
 
 
 end
