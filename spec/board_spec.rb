@@ -1,5 +1,6 @@
 require './lib/board'
 require './lib/ship'
+require './lib/cell'
 
 RSpec.describe Board do
 
@@ -10,12 +11,12 @@ RSpec.describe Board do
 
   it 'has cells in a hash' do
     board = Board.new
-    expect(board.cell).to be_instance_of(Hash)
+    expect(board.cells).to be_instance_of(Hash)
   end
 
-  xit 'has valid cells' do
+  it 'has valid cells' do
     board = Board.new
-    # this test isn't done being written.
+    board.create_board
     expect(board.valid_coordinate?("A1")).to be true
     expect(board.valid_coordinate?("D4")).to be true
     expect(board.valid_coordinate?("A5")).to be false
