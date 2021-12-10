@@ -23,5 +23,9 @@ RSpec.describe Cell do
    expect(cell.empty?).to be true
  end
 
+ it 'is a ship' do
+   cruiser = Ship.new("Cruiser", 3)
+   expect(cruiser).to be_an_instance_of(Ship)
+ end
 
 end
