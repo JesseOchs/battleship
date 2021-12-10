@@ -7,27 +7,27 @@ RSpec.describe Ship do
     expect(cruiser).to be_instance_of(Ship)
   end
 
-  it 'has a name' do
+  xit 'has a name' do
     cruiser = Ship.new("Cruiser", 3)
     expect(cruiser.name).to eq("Cruiser")
   end
 
-  it 'has a length' do
+  xit 'has a length' do
     cruiser = Ship.new("Cruiser", 3)
     expect(cruiser.length).to eq(3)
   end
 
-  it 'has health' do
+  xit 'has health' do
     cruiser = Ship.new("Cruiser", 3)
     expect(cruiser.health).to eq(3)
   end
 
-  it 'hasn not sunk' do
+  xit 'hasn not sunk' do
     cruiser = Ship.new("Cruiser", 3)
     expect(cruiser.sunk?).to be false
   end
 
-  it 'loses health when hit' do
+  xit 'loses health when hit' do
     cruiser = Ship.new("Cruiser", 3)
     cruiser.hit
     expect(cruiser.health).to eq(2)
