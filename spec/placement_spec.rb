@@ -1,4 +1,3 @@
-require 'pry'
 require './lib/placement'
 require './lib/ship'
 
@@ -14,7 +13,6 @@ RSpec.describe Placement do
     cruiser = Ship.new("Cruiser", 3)
     coordinates = ["A1", "A2", "A3"]
     placement = Placement.new(cruiser, coordinates)
-    placement.split_keys
     expect(placement.valid_placement?).to be true
   end
 
@@ -33,10 +31,10 @@ RSpec.describe Placement do
  end
 
  it 'places Cruiser consecutively' do
-   cruiser = Ship.new("Cruiser", 3)
-   coordinates = ["A1", "A2", "A4"]
+   cruiser = Ship.new("Cruiser", 4)
+   coordinates = ["A4", "A3", "A2", "A1"]
    placement = Placement.new(cruiser, coordinates)
-   placement.split_keys
+
    expect(placement.valid_placement?).to eq false
  end
 
@@ -44,7 +42,6 @@ RSpec.describe Placement do
    submarine = Ship.new("Submarine", 2)
    coordinates = ["A1", "C1"]
    placement = Placement.new(submarine, coordinates)
-   placement.split_keys
    expect(placement.valid_placement?).to be false
  end
 
@@ -52,7 +49,6 @@ RSpec.describe Placement do
    cruiser = Ship.new("Cruiser", 3)
    coordinates = ["A3", "A2", "A1"]
    placement = Placement.new(cruiser, coordinates)
-   placement.split_keys
    expect(placement.valid_placement?).to eq false
  end
 
