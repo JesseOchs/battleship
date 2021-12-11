@@ -1,4 +1,5 @@
 require './lib/cell'
+require './lib/placement'
 
 class Board
 
@@ -20,9 +21,12 @@ class Board
     end
 
     def valid_placement?(ship, coordinates)
-      ship.length == coordinates.size
-    end
+      placement = Placement.new(ship, coordinates)
+      placement.split_keys
 
+
+      return placement.valid_placement
+    end
 
 
 end
