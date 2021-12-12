@@ -38,14 +38,7 @@ RSpec.describe Placement do
    expect(placement.valid_placement?).to eq false
  end
 
- xit 'places Submarine consecutively' do
-   submarine = Ship.new("Submarine", 2)
-   coordinates = ["A1", "C1"]
-   placement = Placement.new(submarine, coordinates)
-   expect(placement.valid_placement?).to be false
- end
-
- xit 'places Cruiser consecutively backwards' do
+ it 'places Cruiser consecutively backwards' do
    cruiser = Ship.new("Cruiser", 3)
    coordinates = ["A3", "A2", "A1"]
    placement = Placement.new(cruiser, coordinates)
