@@ -25,5 +25,13 @@ class Board
       return placement.valid_placement?
     end
 
+    def place(ship, coordinates)
+    return if valid_placement?(ship, coordinates) == false
+      coordinates.each do |coordinate|
+        @cells[coordinate].place_ship(ship)
+      end
+      return @cells
+    end
 
 end
+require 'pry'; binding.pry
