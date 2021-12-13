@@ -41,5 +41,5 @@ class Board
       "C" + " " + @cells["C1"].render(arg) + " " + @cells["C2"].render(arg) + " " + @cells["C3"].render(arg) + " " + @cells["C4"].render(arg) + " \n"  +
       "D" + " " + @cells["D1"].render(arg) + " " + @cells["D2"].render(arg) + " " + @cells["D3"].render(arg) + " " + @cells["D4"].render(arg) + " \n"
     end
-require 'pry'; binding.pry
+
 end
