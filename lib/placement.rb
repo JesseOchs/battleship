@@ -23,7 +23,8 @@ class Placement
     @nums == @nums.sort &&
     (@nums.last - @nums.first + 1 == @ship.length || @nums.uniq.size == 1) &&
     (@letters.last.ord - @letters.first.ord + 1 == @ship.length || @letters.uniq.size == 1) &&
-    @letters.uniq.size != @nums.uniq.size
+    @letters.uniq.size != @nums.uniq.size &&
+    (@letters.uniq.size == 1 || @nums.uniq.size == 1)
    end
 
 end
