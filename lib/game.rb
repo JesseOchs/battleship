@@ -21,13 +21,14 @@ class Game
     if input == 'p'
       @board.create_board
       @computer_board.create_board
-      p @board.render
       place_cruiser
     end
   end
 
+
   def place_cruiser
-    p 'Place your Cruiser in 3 coordinates'
+    p 'Place your Cruiser in 3 coordinates, 1 coordinate at a time'
+    puts @board.render
     coord_1 = input.to_s.upcase
     coord_2 = input.to_s.upcase
     coord_3 = input.to_s.upcase
@@ -41,9 +42,9 @@ class Game
   end
 
   def place_sub
-    p @board.render(true)
     @board.clear
-    p 'Place your Submarine in 2 coordinates'
+    p 'Place your Submarine in 2 coordinates, 1 coordinate at a time'
+    puts @board.render(true)
     coord_4 = input.to_s.upcase
     coord_5 = input.to_s.upcase
     until @board.valid_placement?(@submarine, [coord_4, coord_5]) == true
@@ -75,7 +76,6 @@ class Game
     sub = computer_randomizer(@computer_submarine)
     @computer_board.place(@computer_submarine, sub)
     @computer << @computer_submarine
-    p @computer_board.render(true)
     player_turn
   end
 
@@ -87,16 +87,16 @@ class Game
 
   def player_turn
     p 'Fire on a coordinate'
+    puts @computer_board.render
     fire = input.to_s.upcase
     @computer_board.cells[fire].fire_upon
-    p @computer_board.render
+    puts @computer_board.render
     computer_turn
   end
 
   def computer_turn
     p 'Computers turn'
     @board.cells[computer_shot.first].fire_upon
-    @board.render
     rounds
   end
 
@@ -118,7 +118,7 @@ class Game
   end
 
   def winner
-    p 'winner'
+   puts "winner"
   end
 
 

@@ -29,6 +29,12 @@ class Board
       end
     end
 
+    def no_overlap?(coordinates)
+      overlap = coordinates.map do |coord|
+        @cells[coord].empty?
+      end
+      overlap.all? == true
+    end
 
     def valid_placement?(ship, coordinates)
       split_coordinates(ship, coordinates)
@@ -37,7 +43,7 @@ class Board
       (@nums.last - @nums.first + 1 == ship.length || @nums.uniq.size == 1) &&
       (@letters.last.ord - @letters.first.ord + 1 == ship.length || @letters.uniq.size == 1) &&
       @letters.uniq.size != @nums.uniq.size &&
-      (@letters.uniq.size == 1 || @nums.uniq.size == 1)
+      (@letters.uniq.size == 1 || @nums.uniq.size == 1) && no_overlap?(coordinates)
     end
 
     def clear
@@ -46,9 +52,9 @@ class Board
     end
 
     def place(ship, coordinates)
-        coordinates.each do |coordinate|
-            @cells[coordinate].place_ship(ship)
-          end
+      coordinates.each do |coordinate|
+        @cells[coordinate].place_ship(ship)
+      end
     end
 
 
