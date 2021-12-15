@@ -111,10 +111,11 @@ class Game
   end
 
   def rounds
-    until end_game == true
+    case
+    when end_game == true then winner
+    else
       player_turn
     end
-    winner
   end
 
   def winner
