@@ -55,22 +55,69 @@ class Game
   end
 
   def computer_randomizer(ship)
-    @computer_board.cells.keys.sample(ship.length)
+    @computer_board.clear
+  random =  @computer_board.cells.keys.sample(ship.length)
+    if @computer_board.valid_placement?(ship, random) == true
+      return random
+    else
+      computer_randomizer(ship)
+     end
   end
 
   def computer_place_cruiser
     placer = computer_randomizer(@computer_cruiser)
-    case
-    when @computer_board.valid_placement?(@computer_cruiser, placer) == true then @computer_board.place(@computer_cruiser, placer)
-    else
-      @computer_board.clear
-      computer_place_cruiser
-    end
+    @computer_board.place(@computer_cruiser, placer)
       p @computer_board.render(true)
+      computer_place_sub
+  end
+
+  def computer_place_sub
+    sub = computer_randomizer(@computer_submarine)
+    @computer_board.place(@computer_submarine, sub)
+    p @computer_board.render(true)
+    turns
   end
 
 
   def turns
-
+    p @computer_board.render(true)
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+  # def computer_randomizer(ship)
+  #    random = @computer_board.cells.keys.sample(ship.length).
+  #
+  #  if @computer_board.valid_placement?(ship, random) == true
+  #    return random
+  #  else
+  #    @computer_board.clear
+  #    computer_randomizer(ship)
+  #   end
+  # end
+  #
+  #
+  #
+  # def computer_place_cruiser
+  #   cruise = computer_randomizer(@computer_cruiser)
+  #   @computer_board.place(@computer_cruiser, cruise)
+  #     p @computer_board.render(true)
+  #
+  #     computer_place_sub
+  # end
+  #
+  # def computer_place_sub
+  #   sub = computer_randomizer(@computer_submarine)
+  #   @computer_board.place(@computer_submarine, sub)
+  #   p @computer_board.render(true)
+  #   p 'did it'
