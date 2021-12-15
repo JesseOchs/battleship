@@ -95,51 +95,22 @@ class Game
 
   def computer_turn
     p 'Computers turn'
-    p computer_shot.first
     @board.cells[computer_shot.first].fire_upon
     @board.render
+    rounds
   end
 
-  
 
+  def end_game
+
+    @player == 0 || @computer.count == 0
+  end
+
+  def rounds
+    until end_game == true
+      player_turn
+    end
+  end
 
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-  # def computer_randomizer(ship)
-  #    random = @computer_board.cells.keys.sample(ship.length).
-  #
-  #  if @computer_board.valid_placement?(ship, random) == true
-  #    return random
-  #  else
-  #    @computer_board.clear
-  #    computer_randomizer(ship)
-  #   end
-  # end
-  #
-  #
-  #
-  # def computer_place_cruiser
-  #   cruise = computer_randomizer(@computer_cruiser)
-  #   @computer_board.place(@computer_cruiser, cruise)
-  #     p @computer_board.render(true)
-  #
-  #     computer_place_sub
-  # end
-  #
-  # def computer_place_sub
-  #   sub = computer_randomizer(@computer_submarine)
-  #   @computer_board.place(@computer_submarine, sub)
-  #   p @computer_board.render(true)
-  #   p 'did it'
