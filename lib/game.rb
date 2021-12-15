@@ -67,21 +67,43 @@ class Game
   def computer_place_cruiser
     placer = computer_randomizer(@computer_cruiser)
     @computer_board.place(@computer_cruiser, placer)
-      p @computer_board.render(true)
+    @computer << @computer_cruiser
       computer_place_sub
   end
 
   def computer_place_sub
     sub = computer_randomizer(@computer_submarine)
     @computer_board.place(@computer_submarine, sub)
+    @computer << @computer_submarine
     p @computer_board.render(true)
-    turns
+    player_turn
+  end
+
+  def computer_shot
+    shot =  @computer_board.cells.keys.sample(1)
+    return shot
   end
 
 
-  def turns
-    p @computer_board.render(true)
+  def player_turn
+    p 'Fire on a coordinate'
+    fire = input.to_s.upcase
+    @computer_board.cells[fire].fire_upon
+    p @computer_board.render
+    computer_turn
   end
+
+  def computer_turn
+    p 'Computers turn'
+    p computer_shot.first
+    @board.cells[computer_shot.first].fire_upon
+    @board.render
+  end
+
+  
+
+
+
 end
 
 
