@@ -92,8 +92,13 @@ class Game
     puts 'Fire on a coordinate'
     puts @computer_board.render
     fire = input.to_s.upcase
-    @computer_board.cells[fire].fire_upon
-    puts @computer_board.render
+    case
+    when @board.valid_coordinate?(fire) == true then
+      @computer_board.cells[fire].fire_upon
+      puts @computer_board.render
+    else 
+      player_turn
+    end
     case
       when end_game? == true then winner
     else
