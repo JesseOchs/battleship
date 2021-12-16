@@ -96,7 +96,7 @@ class Game
     when @board.valid_coordinate?(fire) == true then
       @computer_board.cells[fire].fire_upon
       puts @computer_board.render
-    else 
+    else
       player_turn
     end
     case
@@ -139,6 +139,7 @@ class Game
    else
      puts "Congrats you won!"
    end
+   start
   end
 
 
