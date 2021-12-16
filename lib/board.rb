@@ -38,12 +38,15 @@ class Board
 
     def valid_placement?(ship, coordinates)
       split_coordinates(ship, coordinates)
+      @nums.sort
       ship.length == coordinates.size &&
       @nums == @nums.sort &&
       (@nums.last - @nums.first + 1 == ship.length || @nums.uniq.size == 1) &&
       (@letters.last.ord - @letters.first.ord + 1 == ship.length || @letters.uniq.size == 1) &&
       @letters.uniq.size != @nums.uniq.size &&
-      (@letters.uniq.size == 1 || @nums.uniq.size == 1) && no_overlap?(coordinates)
+      (@letters.uniq.size == 1 || @nums.uniq.size == 1) && no_overlap?(coordinates) &&
+      (@nums.last - @nums.first + 1 == ship.length && @letters.uniq.size == 1 ||
+       @letters.last.ord - @letters.first.ord + 1 == ship.length && @nums.uniq.size == 1)
     end
 
     def clear

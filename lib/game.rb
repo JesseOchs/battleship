@@ -16,8 +16,9 @@ class Game
 
 
   def start
-    p "Welcome to Battleship!"
-    p "Press p to play or q to quit."
+    puts "Welcome to Battleship!"
+    puts "Press p to play or q to quit."
+    puts "*" * 40
     if input == 'p'
       @board.create_board
       @computer_board.create_board
@@ -27,7 +28,8 @@ class Game
 
 
   def place_cruiser
-    p 'Place your Cruiser in 3 coordinates, 1 coordinate at a time'
+    puts "*" * 40
+    puts 'Place your Cruiser in 3 coordinates, 1 coordinate at a time'
     puts @board.render
     coord_1 = input.to_s.upcase
     coord_2 = input.to_s.upcase
@@ -43,7 +45,7 @@ class Game
 
   def place_sub
     @board.clear
-    p 'Place your Submarine in 2 coordinates, 1 coordinate at a time'
+    puts 'Place your Submarine in 2 coordinates, 1 coordinate at a time'
     puts @board.render(true)
     coord_4 = input.to_s.upcase
     coord_5 = input.to_s.upcase
@@ -57,7 +59,7 @@ class Game
 
   def computer_randomizer(ship)
     @computer_board.clear
-  random =  @computer_board.cells.keys.sample(ship.length)
+    random =  @computer_board.cells.keys.sample(ship.length)
     if @computer_board.valid_placement?(ship, random) == true
       return random
     else
@@ -86,17 +88,24 @@ class Game
 
 
   def player_turn
-    p 'Fire on a coordinate'
+    puts "*" * 40
+    puts 'Fire on a coordinate'
     puts @computer_board.render
     fire = input.to_s.upcase
     @computer_board.cells[fire].fire_upon
     puts @computer_board.render
-    computer_turn
+    case
+      when end_game? == true then winner
+    else
+      computer_turn
+    end
   end
 
   def computer_turn
-    p 'Computers turn'
+    puts "*" * 40
+    puts 'Computers turn'
     @board.cells[computer_shot.first].fire_upon
+    puts @board.render
     rounds
   end
 
@@ -105,21 +114,26 @@ class Game
     @computer.delete_if {|ship| ship.sunk?}
   end
 
-  def end_game
+  def end_game?
     sunk_ship?
     @player.count == 0 || @computer.count == 0
   end
 
   def rounds
     case
-    when end_game == true then winner
+    when end_game? == true then winner
     else
       player_turn
     end
   end
 
   def winner
-   puts "winner"
+    puts "*" * 40
+   if @player.count == 0
+     puts "Bummer you lost!"
+   else
+     puts "Congrats you won!"
+   end
   end
 
 
